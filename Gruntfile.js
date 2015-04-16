@@ -70,11 +70,6 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('build', [
-    //'clean:stage',
-    //'copy',
-    //'compile',
-    //'patch',
-    //'symlink',
   ]);
 
   grunt.registerTask('test', [

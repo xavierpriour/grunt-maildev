@@ -11,8 +11,7 @@ npm install grunt-maildev --save-dev
 
 ## Usage
 
-Start a server, keep it running and open a browser on the web view.
-
+Start a server, keep it running and open a browser on the web view:
 ```javascript
 require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 
@@ -30,9 +29,9 @@ grunt.initConfig({
 grunt.registerTask('default', ['maildev:run']);
 ```
 
-Start a server and use it for your tests (logging all received emails to console),
-then close everything.
 
+Start a server and use it for your tests (logging all received emails to console),
+then close everything:
 ```javascript
 grunt.initConfig({
   maildev: {
@@ -49,35 +48,37 @@ grunt.registerTask('test', ['maildev:run, test1, test2']);
 ## Options
 
 Please refer to [MailDev](https://github.com/djfarrelly/MailDev)
-to understand what options mean.
+if you need more understanding regarding each option.
 
 ### smtpPort
 
 Type: `number`  
 Default: `1025`
 
-The port on which you want to access the SMTP server.
+The port for the SMTP server.
 
 ### httpPort
 
 Type: `number`  
 Default: `1080`
 
-The port on which you want to access the webserver that displays the emails received.
+The port for the webserver (to display emails received).
 
 ### open
 
-Type: `boolean`
+Type: `boolean` 
 Default: `false`
 
-Open a browser on the MailDev web server view when task is triggered.
+If true, open a browser displaying the web server view.
 
 ### keepalive
 
 Type: `boolean`  
 Default: `false`
 
-Keep the server alive indefinitely. Any task specified after this will not run.
+If true, keep the server alive indefinitely.
+Any task specified after this will **not** run.
+
 You do **not** want this if you have tests or watches set after this task! 
 
 ### onNewMail
@@ -85,11 +86,11 @@ You do **not** want this if you have tests or watches set after this task!
 Type: `function`
 Default: `null`
 
-Will be called each time a message is received by the server,
+If specified, will be called each time a message is received by the server,
 with the message passed as an argument.
 
 See [here](https://github.com/djfarrelly/MailDev/blob/master/docs/rest.md#example-email-response)
-for the details of the mail argument.
+for the fields of the supplied mail object.
 
 ### relay
 
@@ -117,9 +118,14 @@ You need `git` and `node`
 
 ```
 git clone https://github.com/xavierpriour/grunt-maildev.git
-cd catchmail-node
+cd grunt-maildev
 npm install
 grunt
 ```
 
 Thanks and enjoy!
+
+
+## Licence
+
+MIT © [Xavier Priour](https://github.com/xavierpriour)
