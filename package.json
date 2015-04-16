@@ -1,0 +1,44 @@
+{
+  "name": "grunt-maildev",
+  "version": "1.0.0",
+  "description": "Start a MailDev SMTP server",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xavierpriour/grunt-maildev.git"
+  },
+  "keywords": [
+    "grunt",
+    "gruntplugin",
+    "mail",
+    "email",
+    "maildev",
+    "server",
+    "smtp",
+    "test"
+  ],
+  "author": "Xavier Priour <xavier.priour@bubblyware.com> (http://bubblyware.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xavierpriour/grunt-maildev/issues"
+  },
+  "homepage": "https://github.com/xavierpriour/grunt-maildev",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.6.0",
+    "grunt-notify": "^0.4.1",
+    "load-grunt-tasks": "^3.1.0",
+    "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "maildev": "^0.9.1"
+  }
+}
