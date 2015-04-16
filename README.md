@@ -66,7 +66,7 @@ The port for the webserver (to display emails received).
 
 ### open
 
-Type: `boolean` 
+Type: `boolean`  
 Default: `false`
 
 If true, open a browser displaying the web server view.
@@ -83,7 +83,7 @@ You do **not** want this if you have tests or watches set after this task!
 
 ### onNewMail
 
-Type: `function`
+Type: `function`  
 Default: `null`
 
 If specified, will be called each time a message is received by the server,
