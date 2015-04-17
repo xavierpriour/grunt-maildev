@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 
     if (this.data.onNewMail) {options.onNewMail = this.data.onNewMail;}
     if (this.data.keepAlive) {options.keepAlive = this.data.keepAlive;}
+    if (this.data.open) {options.open = this.data.open;}
 
     if (options.onNewMail && (typeof options.onNewMail !== 'function')) {
       grunt.fatal('onNewMail must be a function(email)');

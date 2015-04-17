@@ -18,10 +18,8 @@ require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 grunt.initConfig({
   maildev: {
     run: {
-      options: {
-        open: true,
-        keepAlive: true
-      }
+      keepAlive: true,
+      open: true
     }
   }
 });
@@ -35,13 +33,17 @@ then close everything:
 ```javascript
 grunt.initConfig({
   maildev: {
-    run: {
-      onNewMail: function(email) {console.log(email);}
+    test: {
+      onNewMail: function(email) {console.log(email);},
+      options: {
+        smtpPort: 1625,
+        httpPort: 1680
+      }
     }
   }
 });
 
-grunt.registerTask('test', ['maildev:run, test1, test2']);
+grunt.registerTask('test', ['maildev:test, test1, test2']);
 ```
 
 
@@ -50,12 +52,11 @@ grunt.registerTask('test', ['maildev:run, test1, test2']);
 Please refer to [MailDev](https://github.com/djfarrelly/MailDev)
 if you need more understanding regarding each option.
 
-### smtpPort
+Also, note that the following options can also be specified directly at task level:
 
-Type: `number`  
-Default: `1025`
-
-The port for the SMTP server.
+- keepAlive
+- onNewMail
+- open
 
 ### httpPort
 
@@ -63,13 +64,6 @@ Type: `number`
 Default: `1080`
 
 The port for the webserver (to display emails received).
-
-### open
-
-Type: `boolean`  
-Default: `false`
-
-If true, open a browser displaying the web server view.
 
 ### keepalive
 
@@ -92,6 +86,13 @@ with the message passed as an argument.
 See [here](https://github.com/djfarrelly/MailDev/blob/master/docs/rest.md#example-email-response)
 for the fields of the supplied mail object.
 
+### open
+
+Type: `boolean`  
+Default: `false`
+
+If true, open a browser displaying the web server view.
+
 ### relay
 
 Type: `object`  
@@ -111,6 +112,12 @@ relay: {
   pass: 'your secret password'
 },
 ```
+### smtpPort
+
+Type: `number`  
+Default: `1025`
+
+The port for the SMTP server.
 
 
 ## Build, test, contribute

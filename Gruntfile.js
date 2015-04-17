@@ -41,10 +41,10 @@ module.exports = function(grunt) {
       run: {
         options: {
           httpPort: 1980,
-          open: true,
           onNewMail: function(email) {console.log(email);}
         },
-        keepAlive: true
+        keepAlive: true,
+        open: true
       },
       relay: {
         options: {
@@ -62,6 +62,13 @@ module.exports = function(grunt) {
       fail: {
         options: {
           onNewMail: 'rasdr'
+        }
+      },
+      test: {
+        onNewMail: function(email) {console.log(email);},
+        options: {
+          smtpPort: 1625,
+          httpPort: 1680
         }
       }
     }
