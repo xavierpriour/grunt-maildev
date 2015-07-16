@@ -36,8 +36,15 @@ grunt.initConfig({
     test: {
       onNewMail: function(email) {console.log(email);},
       options: {
-        smtpPort: 1625,
-        httpPort: 1680
+        smtp: {
+          port: 1625
+        },
+        http: {
+          address: '0.0.0.0',
+          port: 1680,
+          user: 'user_login',
+          password: 'secret_password'
+        }
       }
     }
   }
@@ -58,12 +65,37 @@ Also, note that the following options can also be specified directly at task lev
 - onNewMail
 - open
 
-### httpPort
+### http.address
+
+Type: `string`
+Default: `127.0.0.1`
+
+The IP address the HTTP server will listen to.
+Leave as is to restrict connections to local machine,
+or set to '0.0.0.0' (or public IP address)
+to accept connections from the outside world.
+
+### http.password
+
+Type: `string`  
+Default: `null`
+
+If set (in conjunction with http.user),
+http server will require authentication using supplied name and password.
+
+### http.port
 
 Type: `number`  
 Default: `1080`
 
 The port for the webserver (to display emails received).
+
+### http.user
+
+Type: `string`  
+Default: `null`
+
+If set, http server will require authentication using supplied name and password.
 
 ### keepalive
 
@@ -93,7 +125,32 @@ Default: `false`
 
 If true, open a browser displaying the web server view.
 
-### relay
+### smtp.address
+
+Type: `string`
+Default: `127.0.0.1`
+
+The IP address the SMTP server will listen to.
+Leave as is to restrict connections to local machine,
+or set to '0.0.0.0' (or public IP address)
+to accept connections from the outside world (not recommended).
+
+### smtp.password
+
+Type: `string`  
+Default: `null`
+
+If set (in conjunction with smtp.user),
+smtp server will require authentication using supplied name and password.
+
+### smtp.port
+
+Type: `number`  
+Default: `1025`
+
+The port for the SMTP server.
+
+### smtp.relay
 
 Type: `object`  
 Default: `null`
@@ -104,20 +161,23 @@ Specifies if/how messages could be relayed to an actual SMTP server
 Authorized fields:
 
 ```javascript
-relay: {
-  host: 'mail.yourdomain.com',
-  port: 465,
-  secure: true,
-  user: 'your_user',
-  pass: 'your secret password'
-},
+smtp: {
+  relay: {
+    host: 'mail.yourdomain.com',
+    port: 465,
+    secure: true,
+    user: 'your_user',
+    pass: 'your secret password'
+  },
+}
 ```
-### smtpPort
 
-Type: `number`  
-Default: `1025`
+### smtp.user
 
-The port for the SMTP server.
+Type: `string`  
+Default: `null`
+
+If set, smtp server will require authentication using supplied name and password.
 
 
 ## Build, test, contribute
@@ -132,6 +192,20 @@ grunt
 
 Thanks and enjoy!
 
+##Changelog
+
+###2.0
+
+Features:
+
+- updated to MailDev 0.11 and all its new options
+- better options grouping
+
+###1.0.1 (2015-04-17)
+
+Features:
+
+- Initial version
 
 ## Licence
 

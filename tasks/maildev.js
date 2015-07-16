@@ -1,17 +1,28 @@
 'use strict';
 
+
 module.exports = function(grunt) {
   grunt.registerMultiTask('maildev', 'Start a MailDev SMTP server', function() {
     var MailDev = require('maildev');
 
-    var options = this.options({
-      smtpPort: 1025,
-      httpPort: 1080,
-      open: false,
-      keepAlive: false,
-      onNewMail: null, // callback when new mail is received
-      relay: null
-    });
+    // standard this.options(default) does not provide deep merge
+    var options = grunt.util._.merge(
+      {
+        smtp: {
+          port: 1025,
+          address: '127.0.0.1',
+        },
+        http: {
+          port: 1080,
+          address: '127.0.0.1',
+        },
+        open: false,
+        keepAlive: false,
+        onNewMail: null, // callback when new mail is received
+        relay: null
+      },
+      grunt.config([this.name, this.target, 'options'])
+    );
 
     if (this.data.onNewMail) {options.onNewMail = this.data.onNewMail;}
     if (this.data.keepAlive) {options.keepAlive = this.data.keepAlive;}
@@ -22,13 +33,19 @@ module.exports = function(grunt) {
     }
 
     var config = {
-      smtp: options.smtpPort,
-      web: options.httpPort,
+      smtp: options.smtp.port,
+      ip: options.smtp.address,
+      web: options.http.port,
+      webIp: options.http.address,
       open: options.open,
       verbose: grunt.option('verbose')
     };
+    if (options.http.user) { config.webUser = options.http.user; }
+    if (options.http.password) { config.webPass = options.http.password; }
+    if (options.smtp.user) { config.incomingUser = options.smtp.user; }
+    if (options.smtp.password) { config.incomingPass = options.smtp.password; }
     if (options.relay) {
-      var r = options.relay;
+      var r = options.smtp.relay;
       config.outgoingHost = r.host;
       config.outgoingPort = r.port;
       config.outgoingUser = r.user;

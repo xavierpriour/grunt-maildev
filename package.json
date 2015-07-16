@@ -1,6 +1,6 @@
 {
   "name": "grunt-maildev",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Start a MailDev SMTP server",
   "directories": {
     "test": "test"
@@ -39,6 +39,6 @@
     "mocha": "^2.2.1"
   },
   "dependencies": {
-    "maildev": "^0.9.1"
+    "maildev": "0.x"
   }
 }

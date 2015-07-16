@@ -21,6 +21,60 @@ module.exports = function(grunt) {
       src: jsFiles
     },
 
+    maildev: {
+      run: {
+        options: {
+          http: {
+            port: 1980
+          },
+          onNewMail: function(email) {console.log(email);}
+        },
+        keepAlive: true,
+        open: true
+      },
+      relay: {
+        options: {
+          smtp: {
+            relay: {
+              host: 'smtp.gmail.com',
+              port: 465,
+              secure: true,
+              user: 'you@gmail.com',
+              pass: 'your secret password'
+            },
+          },
+          keepAlive: true,
+          open: true
+        }
+      },
+      fail: {
+        options: {
+          onNewMail: 'rasdr'
+        }
+      },
+      http: {
+        options: {
+          http: {
+            address: '0.0.0.0',
+            port: 8880,
+            user: 'user',
+            password: 'secret',
+          }
+        }
+      },
+      test: {
+        onNewMail: function(email) {console.log(email);},
+        options: {
+          smtp: {
+            port: 1625
+          },
+          http: {
+            port: 1680
+          }
+        }
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       options: {
@@ -36,42 +90,6 @@ module.exports = function(grunt) {
         tasks: ['test']
       }
     },
-
-    maildev: {
-      run: {
-        options: {
-          httpPort: 1980,
-          onNewMail: function(email) {console.log(email);}
-        },
-        keepAlive: true,
-        open: true
-      },
-      relay: {
-        options: {
-          relay: {
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            user: 'you@gmail.com',
-            pass: 'your secret password'
-          },
-          keepAlive: true,
-          open: true
-        }
-      },
-      fail: {
-        options: {
-          onNewMail: 'rasdr'
-        }
-      },
-      test: {
-        onNewMail: function(email) {console.log(email);},
-        options: {
-          smtpPort: 1625,
-          httpPort: 1680
-        }
-      }
-    }
   });
 
   grunt.loadTasks('tasks');
