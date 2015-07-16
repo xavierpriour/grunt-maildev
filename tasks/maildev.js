@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       config.outgoingPass = r.pass;
       config.outgoingSecure = r.secure;
     }
-    console.log(config);
+    // console.log(config);
     var done = this.async();
     var maildev = new MailDev(config);
     if (options.onNewMail) {
