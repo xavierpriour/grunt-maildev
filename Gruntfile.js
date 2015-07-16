@@ -31,10 +31,16 @@ module.exports = function(grunt) {
     },
 
     maildev: {
+      options: {
+        http: {
+          address: '0.0.0.0'
+        }
+      },
+
       run: {
         options: {
           http: {
-            port: 1980
+            port: 1981
           },
           onNewMail: function(email) {console.log(email);}
         },

@@ -194,7 +194,13 @@ Thanks and enjoy!
 
 ##Changelog
 
-###2.0
+###2.0.1 (2015-07-16)
+
+Bugfix:
+
+- merge task-level and target-level options
+
+###2.0.0 (2015-07-16)
 
 Features:
 
