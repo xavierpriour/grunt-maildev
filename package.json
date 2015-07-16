@@ -1,6 +1,6 @@
 {
   "name": "grunt-maildev",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Start a MailDev SMTP server",
   "directories": {
     "test": "test"
