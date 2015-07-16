@@ -194,6 +194,12 @@ Thanks and enjoy!
 
 ##Changelog
 
+###2.0.2 (2015-07-17)
+
+Bugfix:
+
+- mailserver did not start, I implemented option --web-ip too soon
+
 ###2.0.1 (2015-07-16)
 
 Bugfix:
