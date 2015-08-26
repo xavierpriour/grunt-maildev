@@ -40,8 +40,7 @@ module.exports = function(grunt) {
       smtp: options.smtp.port,
       ip: options.smtp.address,
       web: options.http.port,
-      // todo uncomment once MailDev implements https://github.com/djfarrelly/MailDev/pull/78
-      // webIp: options.http.address,
+      webIp: options.http.address,
       open: options.open,
       verbose: grunt.option('verbose')
     };
@@ -49,7 +48,7 @@ module.exports = function(grunt) {
     if (options.http.password) { config.webPass = options.http.password; }
     if (options.smtp.user) { config.incomingUser = options.smtp.user; }
     if (options.smtp.password) { config.incomingPass = options.smtp.password; }
-    if (options.relay) {
+    if (options.smtp.relay) {
       var r = options.smtp.relay;
       config.outgoingHost = r.host;
       config.outgoingPort = r.port;

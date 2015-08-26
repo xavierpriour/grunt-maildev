@@ -167,7 +167,7 @@ smtp: {
     port: 465,
     secure: true,
     user: 'your_user',
-    pass: 'your secret password'
+    pass: 'your secret password',
   },
 }
 ```

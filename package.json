@@ -42,6 +42,6 @@
     "semver": "^5.0"
   },
   "dependencies": {
-    "maildev": "0.x"
+    "maildev": "^0.12"
   }
 }
