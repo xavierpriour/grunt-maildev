@@ -1,6 +1,5 @@
 'use strict';
 
-
 module.exports = function(grunt) {
   grunt.registerMultiTask('maildev', 'Start a MailDev SMTP server', function() {
     var MailDev = require('maildev');
@@ -12,11 +11,11 @@ module.exports = function(grunt) {
     var options = {
       smtp: {
         port: 1025,
-        address: '127.0.0.1',
+        address: '127.0.0.1'
       },
       http: {
         port: 1080,
-        address: '127.0.0.1',
+        address: '127.0.0.1'
       },
       open: false,
       keepAlive: false,
