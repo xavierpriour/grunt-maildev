@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     bump: {
       options: {
         pushTo: 'origin',
-        tagName: '%VERSION%',
+        tagName: '%VERSION%'
       }
     },
 
@@ -55,8 +55,9 @@ module.exports = function(grunt) {
               port: 465,
               secure: true,
               user: 'you@gmail.com',
-              pass: 'your secret password'
-            },
+              pass: 'your secret password',
+              auto: [{deny: '*'}, {allow: 'xavier.priour@bubblyware.com'}]
+            }
           },
           keepAlive: true,
           open: true
@@ -73,7 +74,7 @@ module.exports = function(grunt) {
             address: '0.0.0.0',
             port: 8880,
             user: 'user',
-            password: 'secret',
+            password: 'secret'
           }
         }
       },
@@ -178,7 +179,7 @@ module.exports = function(grunt) {
         files: jsFiles,
         tasks: ['test']
       }
-    },
+    }
   });
 
   grunt.loadTasks('tasks');
@@ -197,6 +198,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('newRelease', 'Ready everything for new release', [
     'prompt:bump',
+    'test',
     'bump',
   ]);
 

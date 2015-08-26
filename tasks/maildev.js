@@ -54,6 +54,12 @@ module.exports = function(grunt) {
       config.outgoingUser = r.user;
       config.outgoingPass = r.pass;
       config.outgoingSecure = r.secure;
+      if (r.auto) {
+        config.autoRelay = true;
+        if ((typeof r.auto === 'string') || (Array.isArray(r.auto))) {
+          config.autoRelayRules = r.auto;
+        }
+      }
     }
     // console.log(config);
     var done = this.async();

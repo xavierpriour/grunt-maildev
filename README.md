@@ -168,9 +168,23 @@ smtp: {
     secure: true,
     user: 'your_user',
     pass: 'your secret password',
+    auto: 'filename or rules array see https://github.com/djfarrelly/MailDev#auto-relay-mode'
   },
 }
 ```
+
+### smtp.relay.auto
+
+Type: `boolean`, `string` or `Array`
+Default: false
+
+Specifies if auto-relay should be setup (see https://github.com/djfarrelly/MailDev#auto-relay-mode).
+If set to anything not falsy, it will switch on auto-relaying
+Acceptable values are:
+
+* an array: should match the syntax described in https://github.com/djfarrelly/MailDev#auto-relay-mode
+* a string: should be the name of a JSON file containing an array of relay rules as above
+* anything else not falsy: will auto-relay all messages
 
 ### smtp.user
 
@@ -193,6 +207,10 @@ grunt
 Thanks and enjoy!
 
 ##Changelog
+
+###2.1.0 (2015-08-26)
+
+- updated to MailDev 0.12: set web IP separately from SMTP, and auto-relay options
 
 ###2.0.3-2.0.2 (2015-07-17)
 
